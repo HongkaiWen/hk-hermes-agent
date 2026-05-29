@@ -22,13 +22,11 @@ ENV PYTHONUNBUFFERED=1
 ARG APT_MIRROR=http://mirrors.tuna.tsinghua.edu.cn/debian
 ARG NPM_REGISTRY=https://registry.npmmirror.com
 ARG PYPI_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple
-ARG PLAYWRIGHT_DOWNLOAD_HOST=https://npmmirror.com/mirrors/playwright
 ARG S6_OVERLAY_DOWNLOAD_BASE=https://github.com/just-containers/s6-overlay/releases/download
 
 # Store Playwright browsers outside the volume mount so the build-time
 # install survives the /opt/data volume overlay at runtime.
 ENV PLAYWRIGHT_BROWSERS_PATH=/opt/hermes/.playwright
-ENV PLAYWRIGHT_DOWNLOAD_HOST=${PLAYWRIGHT_DOWNLOAD_HOST}
 ENV UV_INDEX_URL=${PYPI_INDEX_URL}
 ENV PIP_INDEX_URL=${PYPI_INDEX_URL}
 ENV npm_config_registry=${NPM_REGISTRY}
