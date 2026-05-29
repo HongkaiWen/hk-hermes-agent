@@ -42,7 +42,7 @@ ENV npm_config_replace_registry_host=always
 RUN sed -i "s|http://deb.debian.org/debian|${APT_MIRROR}|g; s|http://deb.debian.org/debian-security|${APT_MIRROR}-security|g" /etc/apt/sources.list.d/debian.sources && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
-    ca-certificates curl iputils-ping python3 python-is-python3 ripgrep ffmpeg gcc python3-dev libffi-dev procps git openssh-client docker-cli xz-utils && \
+    ca-certificates curl wget iputils-ping python3 python-is-python3 ripgrep ffmpeg gcc python3-dev libffi-dev procps git openssh-client docker-cli xz-utils && \
     rm -rf /var/lib/apt/lists/*
 
 # ---------- s6-overlay install ----------
@@ -296,7 +296,7 @@ VOLUME [ "/opt/data" ]
 # We use the ENTRYPOINT+CMD split rather than CMD alone so the
 # wrapper is prepended to user-supplied args automatically:
 #
-#   docker run <image>                  → /init main-wrapper.sh   (CMD default)
+#   docker run <image>                  → /init main-wrapper.sh sleep infinity
 #   docker run <image> chat -q "hi"     → /init main-wrapper.sh chat -q hi
 #   docker run <image> sleep infinity   → /init main-wrapper.sh sleep infinity
 #   docker run <image> --tui            → /init main-wrapper.sh --tui
@@ -307,4 +307,4 @@ VOLUME [ "/opt/data" ]
 # exit code. Without the wrapper-as-ENTRYPOINT, leading-dash args
 # like `--version` would be intercepted by /init's POSIX shell.
 ENTRYPOINT [ "/init", "/opt/hermes/docker/main-wrapper.sh" ]
-CMD [ ]
+CMD [ "sleep", "infinity" ]
