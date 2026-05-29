@@ -19,7 +19,7 @@ ARG APT_MIRROR=https://mirrors.tuna.tsinghua.edu.cn/debian
 ARG NPM_REGISTRY=https://registry.npmmirror.com
 ARG PYPI_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple
 ARG PLAYWRIGHT_DOWNLOAD_HOST=https://npmmirror.com/mirrors/playwright
-ARG S6_OVERLAY_DOWNLOAD_BASE=https://ghfast.top/https://github.com/just-containers/s6-overlay/releases/download
+ARG S6_OVERLAY_DOWNLOAD_BASE=https://github.com/just-containers/s6-overlay/releases/download
 
 # Store Playwright browsers outside the volume mount so the build-time
 # install survives the /opt/data volume overlay at runtime.
