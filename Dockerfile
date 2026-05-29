@@ -15,7 +15,7 @@ ENV PYTHONUNBUFFERED=1
 # China-friendly mirrors for deployment environments where upstream package
 # hosts are slow or intermittently blocked. Override these build args to switch
 # back to official upstreams for release builds that require them.
-ARG APT_MIRROR=https://mirrors.tuna.tsinghua.edu.cn/debian
+ARG APT_MIRROR=http://mirrors.tuna.tsinghua.edu.cn/debian
 ARG NPM_REGISTRY=https://registry.npmmirror.com
 ARG PYPI_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple
 ARG PLAYWRIGHT_DOWNLOAD_HOST=https://npmmirror.com/mirrors/playwright
